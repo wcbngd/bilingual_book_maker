@@ -1,0 +1,28 @@
+name: Make Book Workflow
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install -r ./requirements.txt
+
+      - name: Run make_book.py
+        run: |
+          python make_book.py \
+            --book_name "target_book/Sherlock Holmes Complete Novels (Arthur Conan Doyle) (Z-Library)_bilingual_temp.epub" \
+            --openai_key ${{ secrets.OPENAI_KEY }} \
+            --api_base https://api.deepseek.com \
+            --model openai \
+            --model_list deepseek-chat,deepseek-coder \
+            --resume
