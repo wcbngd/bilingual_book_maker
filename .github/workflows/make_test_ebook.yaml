@@ -22,7 +22,7 @@ jobs:
         id: attempt1
         run: |
           python make_book.py \
-            --book_name "target_book/Holmes.epub" \
+            --book_name "target_books/Holmes.epub" \
             --openai_key ${{ secrets.OPENAI_KEY }} \
             --api_base https://api.deepseek.com \
             --model openai \
@@ -35,7 +35,7 @@ jobs:
         if: steps.attempt1.outcome == 'failure'
         run: |
           python make_book.py \
-            --book_name "target_book/Holmes.epub" \
+            --book_name "target_books/Holmes.epub" \
             --openai_key ${{ secrets.OPENAI_KEY }} \
             --api_base https://api.deepseek.com \
             --model openai \
@@ -47,7 +47,7 @@ jobs:
         if: steps.attempt2.outcome == 'failure'
         run: |
           python make_book.py \
-            --book_name "target_book/Holmes.epub" \
+            --book_name "target_books/Holmes.epub" \
             --openai_key ${{ secrets.OPENAI_KEY }} \
             --api_base https://api.deepseek.com \
             --model openai \
@@ -58,4 +58,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: book
-          path: target_book/Holmes.epub
+          path: target_books/Holmes.epub
