@@ -20,7 +20,7 @@ jobs:
       - name: Run make_book.py
         run: |
           python make_book.py \
-            --book_name "target_book/Sherlock Holmes Complete Novels (Arthur Conan Doyle) (Z-Library)_bilingual_temp.epub" \
+            --book_name "test_book/Sherlock Holmes Complete Novels (Arthur Conan Doyle) (Z-Library)_bilingual_temp.epub" \
             --openai_key ${{ secrets.OPENAI_KEY }} \
             --api_base https://api.deepseek.com \
             --model openai \
